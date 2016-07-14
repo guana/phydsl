@@ -53,7 +53,7 @@ a {
       margin-top: 1rem;
       margin-left: 0; } }
 
-img.centered {
+img.centered{
     display: block;
     margin: 0 auto;
 }
@@ -66,15 +66,15 @@ img.centered {
 
 @media screen and (min-width: 64em) {
   .page-header {
-    padding: 0rem 0rem; } }
+    padding: 5rem 2rem; } }
 
 @media screen and (min-width: 42em) and (max-width: 64em) {
   .page-header {
-    padding: 0rem 0rem; } }
+    padding: 3rem 2rem; } }
 
 @media screen and (max-width: 42em) {
   .page-header {
-    padding: 0rem 0rem; } }
+    padding: 2rem 1rem; } }
 
 .project-name {
   margin-top: 0;
