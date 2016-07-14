@@ -53,10 +53,10 @@ a {
       margin-top: 1rem;
       margin-left: 0; } }
 
-.centered {
+img.centered {
     display: block;
-    margin-left: auto;
-    margin-right: auto }
+    margin: 0 auto;
+}
 
 .page-header {
   color: #000000;
