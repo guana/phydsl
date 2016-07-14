@@ -53,6 +53,10 @@ a {
       margin-top: 1rem;
       margin-left: 0; } }
 
+.image.center {
+  text-align: center;
+}
+
 .page-header {
   color: #000000;
   text-align: center;
