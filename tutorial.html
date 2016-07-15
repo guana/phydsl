@@ -233,5 +233,47 @@ You can use the syntax directed editor to help you during the construction of a 
 </section>
 
 
-  </body>
+<section class="main-content">
+<h3>
+<a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Exporting The Game Model</h3>
+
+<p>Once you have written your game definition file you will have to generate a game model that will be consumed by the code generator. In order to do so, please right click on your .phy file > PhyDSL Modeling > Generate Game Model. 
+Next, a ‘.xmi’ game representation of the game will appear next to the game definition file. This step needs to be repeated every time a modification is done to the gameplay design file. Please notice that you have to save the .phy file every time before generating a game model.</p>
+</section>
+
+<img class="centered" src="res/exporting.png" alt="PhyDSL Header 2" align="middle"> <br>
+
+<section class="main-content">
+<h3>
+<a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Running The PhyDSL Generation Engine</h3>
+
+<p>In order to generate the Eclipse Android project that conforms to the gameplay design file.</p>
+
+<p>1.  Double click on the PhyDSL Generator file. </p>
+
+<p>2.  In Windows, please specify the gameplay design file using a relative path to the Jar. In Mac OS, you can select and specify the file using the generators explorer (click on “Select”). Finally, select an empty output directory, and click “Generate Project”.</p>
+</section>
+
+<img class="centered" src="res/running.png" alt="PhyDSL Header 2" align="middle"> <br>
+
+<section class="main-content">
+<h3>
+<a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. Importing The Generated Android Project</h3>
+
+<p>The generated project can be imported into Eclipse using the regular project import process. In eclipse please > right click on the package explore > Import... > Android> Android Project > Find the generated project > Finish. </p>
+
+<p>Once the project is imported into eclipse you can modify the gameplay design file and regenerate the game. The imported version in eclipse will be updated automatically.</p>
+
+<p>We are currently working on integrating Android Studio generation capabilities to PhyDSL.</p>
+</section>
+
+<section class="main-content">
+<h3>
+<a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6. Running The Generated Android Project</h3>
+
+<p>If you see errors in the project please make sure the Android Compiler is set properly in the configuration of the project. You can also try cleaning and building the project. To run the game you can use an emulator or a real Android device.</p>
+</section>
+
+
+</body>
 </html>
