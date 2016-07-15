@@ -98,6 +98,24 @@ In Alien Miner, for every emerald and diamond collected the player will receive 
 <p>The “image”, “size” and “shape” properties determine the look and feel of the actor. Indeed, all the properties assume the concrete values specified in the type section defined above (Section 2.1.) Furthermore, the shape property can only assume two values “circle” or “square”. Depending on the desired visual characteristics of each actor, the shape and size definitions will help PhyDSL to more precisely model the in the behaviours of the actors in the physics simulation of the game.</p>
 
 <p>The property “mobility” can hold two concrete values, namely “dynamic” and “static”. This property specifies whether an actor will be able to move around the physics world of the game, of if is going to be anchored to a specify position.  In the case of Alien Miner, for example, both the “emerald” and the “brick” actors are static. In effect, considering the gameplay design described above, we would like both of them to stay in the same place throughout the entire duration of the game; while the emeralds are actors that will be collected by the alien and should be placed in a specific place in the world of the game, the bricks are the building blocks for the platforms that should not move.  In effect, static actors are not influenced by other forces in the game, including gravity or collision events.</p>
+
+<p>Finally, the “type” property can assume three concrete values “abstract”, “concrete” or “main actor”.</p>
+
+<p><strong>Abstract Actors:</strong></p>
+
+<p>Abstract actors do not interact with any other actor in the game. They can be used as place holders that help modeling the graphical environment of the world. As a concrete example, if a developer wishes to add a tree image to the background of the game, she can do so using an abstract actor. Since no elements will interact with it, the tree will blend with the background image of the world. I effect, the physical properties of an abstract actor are ignored by the physics engine.</p>
+
+<p>In the case of Alien Miner, diamonds are abstract actors. The idea behind this design decision is to make diamonds “transparent” for the physics engine, however, we would like player to be able to hit them using the touch capabilities of her device in order to collect them. Later in this tutorial we will explain how this is done.
+</p>
+
+<p><strong>Concrete Actors:</strong></p>
+
+<p>Concrete actors are the most common actors in most gameplay designs. They observe all the physical interactions supported by the physics engine, such as collisions inside the world of the game. </p>
+
+<p><strong>Main Actor:</strong></p>
+<p>The main actor of the game has the same type properties than other concrete actors. However, labelling an actor as a main actor helps PhyDSL to provide two gameplay design features to developers, namely complex camera behaviours, and on-screen controls. Later in this tutorial we will see how a game can be designed to have a camera that follows the main actor of the game using different strategies. Camera behaviours are only linked to the main actor of the game. Furthermore, we will explore how a developer may opt for having on-screen controls like buttons or interactive elements that manipulate the position of the main actor. It is important to mention that not all games need a main actor. For example, games like Candy Crush or Bejewelled don’t have one. It is also important to mention that in the case of having declared multiple actors as main actor, PhyDSL will only treat the first of them as such.</p>
+
+
 </section>
 
 
