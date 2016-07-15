@@ -114,8 +114,6 @@ In Alien Miner, for every emerald and diamond collected the player will receive 
 
 <p><strong>Main Actor:</strong></p>
 <p>The main actor of the game has the same type properties than other concrete actors. However, labelling an actor as a main actor helps PhyDSL to provide two gameplay design features to developers, namely complex camera behaviours, and on-screen controls. Later in this tutorial we will see how a game can be designed to have a camera that follows the main actor of the game using different strategies. Camera behaviours are only linked to the main actor of the game. Furthermore, we will explore how a developer may opt for having on-screen controls like buttons or interactive elements that manipulate the position of the main actor. It is important to mention that not all games need a main actor. For example, games like Candy Crush or Bejewelled don’t have one. It is also important to mention that in the case of having declared multiple actors as main actor, PhyDSL will only treat the first of them as such.</p>
-
-
 </section>
 
 
@@ -151,38 +149,89 @@ You can use the syntax directed editor to help you during the construction of a 
 <p>In Alien Miner the “alien” actor is placed in the coordinate (x=1.0, y= 1.0). Moreover, since the “alien” actor is mobile, it will be affected by collisions and the gravitational forces of the game simulation as soon as the game starts.</p>
 
 <p>The gravity of the world can be defined in the environment section of the file using the property “gravity”. In this case, the gravity of the planet where the alien is located is equivalent to the one on Earth’s moon. </p>
+
+
+<p><strong>Setting up The Game Background:</strong></p>
+
+<p>The environment section also contains the property “background” which defines the background image of the game. Since Alien Miner is a platformer that takes place inside of a cave, a large horizontal background is suitable to provide a deep sense of immersion for the player. In order to specify the background of a game, two variables are used, namely “image” and “segments”. The “image” variable specifies the name of the background slices provided in the artifacts directory without their numerical identifier. The “segments” variable helps PhyDSL the number of slices that comprise the background image, in order to horizontally assemble it in execution time.  </p>
+
 </section>
+
+<img class="centered" src="res/background.png" alt="PhyDSL Header 2" align="middle"> <br>
+
+<section class="main-content">
+
+<p>A developer may choose having a single slice for a large background image. However, our experience has revealed that this strategy causes a big memory overhead. Indeed, single-slice backgrounds need to be completely loaded before the execution of the game start, which causes jittery gameplay experiences.</p>
+
+<p>In the environment section, the properties  “touch screen” can be set “true” or “false” in order to allow the player to interact with the mobile actors of the game using touch gestures (in touch enabled devices). In the case of Alien Miner this variable is set to false. In effect, the main controllers for Alien Miner will be in the form of on-screen controls (as presented in Section 2.6).</p>
+
+<p><strong>Setting up The Game Camera::</strong></p>
+
+<p>Finally the environment section also includes the “camera” property that captures how the developer wants to configure the camera behaviours of the game. The “camera” property can be set in three possible ways “continuous”, “discrete” or “none”.</p>
+
+<p>If the camera property is set to “none”, the game will present only the first frame of the background loaded to the user. This is appropriate for single scene games that conform to gameplay designs such as in Candy Crush or Wack-a-Mole. However, more complex camera behaviours are needed in order to create engaging gameplay designs. PhyDSL provides two concrete behaviours that can be specified for this purpose.</p>
+
+<p>A continuous camera will follow the main actor of the game while making sure this is located at the center of the player’s screen. This type of camera provides a continuous flow of movement through the world of the game. For Alien Miner we have chosen a continuous camera behaviour.</p>
+
+</section>
+
+<img class="centered" src="res/continuous-camera.png" alt="PhyDSL Header 2" align="middle"> <br>
+
+<section class="main-content">
+<p>On the other hand a discrete camera will swap scenes of the world as the actor approaches its boundaries. Indeed, a discrete camera can be used for highly detailed maps and, with high map-size-to-actors size ratio. In this case, the scene swapping will not be frequent, and will not distract the player. </p>
+</section>
+
+
+<img class="centered" src="res/discrete-camera.png" alt="PhyDSL Header 2" align="middle"> <br>
+
 
 <section class="main-content">
 <h3>
-<a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating a Game Project</h3>
+<a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.4. Defining the Game Activities</h3>
 
-<p></p>
+<p>The fourth step on the creation of a gameplay design file is to optionally set up the activities of the game. PhyDSL activities can be used to model game events that are not directly triggered by the player’s actions.  Currently, only “appear activities” are supported. They model the iterative appearance of a given actor dictated by time.  Appear Activities can be defined by means of providing the activity with a name, along with five properties, namely the “actor” of interest, and the “frequency”, “angular velocity”, “linear speed”, and “position” of the appearance event.</p>
 
-<p></p>
-
-<p></p>
-
-<p></p>
-
-<p></p>
+<p>In Alien Miner two appearance events are defined to represent two places in the world of the game. In these two locations meteorites will appear every 4 and 8 seconds as to provide a challenging obstacle for the player.</p>
 
 </section>
+
+<img class="centered" src="res/activities.png" alt="PhyDSL Header 2" align="middle"> <br>
+
 
 <section class="main-content">
 <h3>
-<a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating a Game Project</h3>
+<a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.5. Defining The Game Scoring Rules</h3>
 
-<p></p>
-
-<p></p>
-
-<p></p>
-
-<p></p>
-
-<p></p>
-
+<p>The fifth step on the creation of a gameplay design is to define the rewards and penalties of the game. PhyDSL enables developers to define three types of triggers that modify the state of the game for this purpose, namely touch-based, collision-based, and time-based scoring rules.</p>
 </section>
+
+<img class="centered" src="res/scoring-a.png" alt="PhyDSL Header 2" align="middle"> <br>
+<img class="centered" src="res/scoring-b.png" alt="PhyDSL Header 2" align="middle"> <br>
+
+<section class="main-content">
+<p>The signature of each scoring rule is different depending on its type. “Collision Rules” include the name of the actors that, upon collision, trigger the scoring rule. In turn, “Touch Rules” are defined by specifying the name of the actor that will trigger the rule if touched by the player. Finally, “Time rules” are specified by setting the total time in seconds that will set a countdown timer which zero-event will trigger the rule. </p>
+
+<p>All scoring rules include three mandatory properties regardless of their type, namely “points”, “game ends”, and “haptic feedback”. The property “points” can positively or negatively affect the point count of the game. The property “game ends” indicates whether the rule will end the game immediately after the rule is triggered. Furthermore, the variable “haptic feedback” indicates whether the device will vibrate if the rule is triggered.</p>
+
+<p>Scoring rules include two optional properties, namely “actor disappears” and “sound feedback”. The former indicates whether there is an actor involved in the signature of the rule that will disappear if the rule is triggered. For example, in the case of Alien Miner, meteorites will disappear if they collide with the Alien. Moreover, gems will disappear if they are collected (either by collision with the alien or touch). Finally, the “sound feedback” property specifies whether the game will use a sound artifact to provide auditory feedback to the player once a rule is triggered. In the case of Alien Miner a crashing sound will provide feedback to the collection of a diamond.</p>
+</section>
+
+
+<section class="main-content">
+<h3>
+<a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.5. Defining The Game Scoring Rules</h3>
+
+<p>The sixth and final step on the creation of a gameplay design is to optionally specify a set of controls for the main actor of the game. This section is only available when the game has a main actor, and it particularly suitable for games in which touchscreen capabilities are disabled (see Section 2.3)</p>
+</section>
+
+<img class="centered" src="res/controls.png" alt="PhyDSL Header 2" align="middle"> <br>
+
+<section class="main-content">
+<p>Controls are on-screen touch-enabled elements that can be designed by giving them a name and three properties, namely “image” which determines how the control element will look like on screen, “position”, and “moves” which specifies the vectorial force that will be applied to the main actor when touched.</p>
+
+<p>In Alien Miner three controls are placed to manipulate the main actor and move it in three different directions: left (left arrow), right (right arrow), and upwards (“A” button).</p>
+</section>
+
+
   </body>
 </html>
