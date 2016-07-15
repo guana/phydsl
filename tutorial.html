@@ -90,13 +90,19 @@ In Alien Miner, for every emerald and diamond collected the player will receive 
 <a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.2 Defining The Game Actors</h3>
 
 <p>The second step on the creation of the game play design is to design the actors of the game. In PhyDSL actors are defined using eight different properties. The first three, namely “density”, “elasticity” and “friction” specify how each actor will behave in the physics world of the game, including their interactions, e.g. how they will react in front of a collision event among them.</p>
+</section>
 
-<p></p>
+<img class="centered" src="res/actors.png" alt="PhyDSL Header 2" align="middle"> <br>
 
-<p></p>
+<section class="main-content">
+<p>The “image”, “size” and “shape” properties determine the look and feel of the actor. Indeed, all the properties assume the concrete values specified in the type section defined above (Section 2.1.) Furthermore, the shape property can only assume two values “circle” or “square”. Depending on the desired visual characteristics of each actor, the shape and size definitions will help PhyDSL to more precisely model the in the behaviours of the actors in the physics simulation of the game.</p>
 
-<p></p>
+<p>The property “mobility” can hold two concrete values, namely “dynamic” and “static”. This property specifies whether an actor will be able to move around the physics world of the game, of if is going to be anchored to a specify position.  In the case of Alien Miner, for example, both the “emerald” and the “brick” actors are static. In effect, considering the gameplay design described above, we would like both of them to stay in the same place throughout the entire duration of the game; while the emeralds are actors that will be collected by the alien and should be placed in a specific place in the world of the game, the bricks are the building blocks for the platforms that should not move.  In effect, static actors are not influenced by other forces in the game, including gravity or collision events.</p>
+</section>
 
+<section class="main-content">
+<p>Tip: Using PhyDSL Editor</p>
+You can use the syntax directed editor to help you during the construction of a gameplay designs. At any point you can use CTR+SPACE to access the auto-competition features of the editor. If there is any syntactical error in the file, the editor will also let you know by highlighting the errors in red.
 <p></p>
 
 </section>
