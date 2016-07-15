@@ -47,8 +47,8 @@ a {
   .btn {
     display: block;
     width: 90%;
-    padding: 0.6rem;
-    font-size: 0.4rem; }
+    padding: 0.4rem;
+    font-size: 0.3rem; }
     .btn + .btn {
       margin-top: 1rem;
       margin-left: 0; } }
