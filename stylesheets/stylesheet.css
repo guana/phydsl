@@ -60,7 +60,7 @@ img.centered{
 
 .videoWrapper iframe {
   position: absolute;
-  display:block;
+  margin: 0 auto;
 }
 
 .page-header {
