@@ -49,7 +49,7 @@
 
 <p>1. On a clean workspace right click on ‘package explorer’ > New > Project ... > General > Project > Next > Give the project a name such as ‘AlienMiner’ > Click Finish.</p>
 
-<p>2. Create an empty folder in the root of the newly created project. Gie it a name such as ‘games’</p>
+<p>2. Create an empty folder in the root of the newly created project. Give it a name such as ‘games’</p>
 
 <p>3. Create a PhyDSL gameplay design file by right clicking on the 'games' folder > New> File> Give the file a name such as AlienMiner.phy. It is important that all the gameplay design files have the '.phy' extension in order for the PhyDSL plugin to recognize them. </p>
 
@@ -63,7 +63,7 @@
 <h3>
 <a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Creating a Gameplay Design File</h3>
 
-<p>In order to create a game definition file you first need to choose all the graphical and sound artifacts that will be part of your game. This includes all the skins for the actors of the game, the game sound effects, and its background image. In order to manage memory more efficiently, you can split large background images into slices of equal size. It is important to mention that the name of the slices should include a consecutive number index (please see the the example below). Later in this tutorial we will explain how slices can be used in order to create a memory efficient game. All the artifacts need to be stored in the “artifacts” directory of the generator. If you have not downloaded the PhyDSL generator please go to the download page in this site.</p>
+<p>In order to create a game definition file you first need to choose all the graphical and sound artifacts that will be part of your game. This includes all the skins for the actors of the game, the game sound effects, and its background image. In order to manage memory more efficiently, you can split large background images into slices of equal size. The name of the slices should include a consecutive number index (please see the the example below). Later in this tutorial we will explain how slices can be used in order to create a memory efficient game. All the artifacts need to be stored in the “artifacts” directory of the generator. If you have not downloaded the PhyDSL generator please go to the download page in this site.</p>
 
 </section>
 
@@ -90,7 +90,7 @@
 <h3>
 <a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.2 Defining The Game Actors</h3>
 
-<p>The second step on the creation of the game play design is to design the actors of the game. In PhyDSL actors are defined using eight different properties. The first three, namely “density”, “elasticity” and “friction” specify how each actor will behave in the physics world of the game, including their interactions, e.g. how they will react in front of a collision event among them.</p>
+<p>The second step on the creation of the game play design is to design the actors of the game. In PhyDSL actors are defined using eight different properties. The first three, namely “density”, “elasticity” and “friction” specify how each actor will behave in the physics simulationof the game, e.g. collisions and gravity forces. </p>
 </section>
 
 <img class="centered" src="res/actors.png" alt="PhyDSL Header 2" align="middle"> <br>
@@ -104,7 +104,7 @@
 
 <p><strong>Abstract Actors:</strong></p>
 
-<p>Abstract actors do not interact with any other actor in the game. They can be used as place holders that help modeling the graphical environment of the world. As a concrete example, if a developer wants to add a tree as a part of the background ambience of the game, she can do so using an abstract actor with the skin of a tree. Since no elements will interact with it, the tree will blend with the background image of the world. I effect, the physical properties of an abstract actor are ignored by the physics engine. It is important to mention that even though abstract actors are not consider in the physics simulation of a game, they can trigger touch events.</p>
+<p>Abstract actors do not interact with any other actor in the game. They can be used as place holders that help modeling the graphical environment of the world. As a concrete example, if a developer wants to add a tree as a part of the background ambience of the game, she can do so using an abstract actor with the skin of a tree. Since no elements will interact with it, the tree will blend with the background image of the world. In effect, the physical properties of an abstract actor are ignored by the physics engine. It is important to mention that even though abstract actors are not considered in the physics simulation of a game, they can trigger touch events.</p>
 
 <p>In the case of Alien Miner, diamonds are abstract actors. The idea behind this design decision is to make diamonds “transparent” for the physics engine, however, we would like player to be able to hit them using the touch capabilities of her device in order to collect them. Later in this tutorial we will explain how this is done.
 </p>
@@ -136,9 +136,9 @@ You can use the syntax directed editor to help you during the construction of a 
 
 <p>The third step on the creation of a gameplay design is to define the layout and environment of the game.</p>
 
-<p>PhyDSL uses a floating point 2D grid-based coordinate system to manage the location of the actors in the world of a game. Developers can create different layouts and place actors around the world of game to create engaging and challenging experiences.</p>
+<p>PhyDSL uses a floating point 2D grid-based coordinate system to manage the location of the actors in the world of a game. Developers can create different layouts and place actors within the world of the game to create engaging and challenging experiences.</p>
 
-<p>As shown below the origin of PhyDSL’s coordinate system is the upper-left corner of the world. Furthermore, the size of the world is determined by the size of its background. </p>
+<p>As shown below the origin of PhyDSL’s coordinate system is in the upper-left corner of the world. Furthermore, the size of the world is determined by the size of its background. </p>
 </section>
 
 <img class="centered" src="res/layout.png" alt="PhyDSL Header 2" align="middle"> <br>
@@ -160,13 +160,13 @@ You can use the syntax directed editor to help you during the construction of a 
 
 <section class="main-content">
 
-<p>A developer may choose having a single slice for a large background image. However, our experience has revealed that this strategy causes a big memory overhead. Indeed, single-slice backgrounds need to be completely loaded before the execution of the game start, which causes jittery gameplay experiences.</p>
+<p>A developer may choose having a single slice for a large background image. However, our experience has revealed that this strategy causes a big memory overhead. Indeed, single-slice backgrounds need to be completely loaded during the initialization of the game, which causes jittery gameplay experiences.</p>
 
 <p>In the environment section, the properties “touch screen” can be set to “true” or “false” in order to allow the player to interact with the mobile actors of the game using touch gestures (in touch enabled devices). In Alien Miner this variable is set to false. In effect, the main controllers for Alien Miner will be in the form of on-screen controls (as presented in Section 2.6).</p>
 
 <p><strong>Setting up The Game Camera::</strong></p>
 
-<p>The environment section also includes the “camera” property. This property captures how the developer wants to configure the camera behaviours of the game. The “camera” property can be set in three possible ways “continuous”, “discrete” or “none”.</p>
+<p>The environment section also includes the “camera” property. This property captures how the developer wants to configure the camera behaviours of the game. The “camera” property can be set in three possible ways: “continuous”, “discrete” or “none”.</p>
 
 <p>If the camera property is set to “none”, the game will present only the first frame of the background loaded to the user. This setting is appropriate for single scene games that conform to gameplay designs such as in Candy Crush or other board-based games. However, more complex camera behaviours are needed in order to create engaging gameplay designs. PhyDSL provides two concrete behaviours that can be specified for this purpose.</p>
 
@@ -184,13 +184,13 @@ You can use the syntax directed editor to help you during the construction of a 
 
 <section class="main-content">
 <h3>
-<a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.4. Defining the Game Activities</h3>
+<a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.4. Defining The Game Activities</h3>
 
-<p>The fourth step on the creation of a gameplay design is to optionally set up the activities of the game. PhyDSL activities can be used to model game events that are not directly triggered by the player’s actions. Currently, only “appear activities” are supported on PhyDSL, however we are working in more!</p>
+<p>The fourth step on the creation of a gameplay design is to optionally set up the activities of the game. PhyDSL activities can be used to model game events that are not directly triggered by the player’s actions. Currently, only “appear activities” are supported on PhyDSL, however we are working on more!</p>
 
 <p>Appear Activities model the iterative appearance of a given actor dictated by time. Appear Activities can be defined by means of providing the activity with a "name" along with five different properties, namely the “actor” of interest, and the “frequency”, “angular velocity”, “linear speed”, and the “position” of the appearance event.</p>
 
-<p>In Alien Miner two appearance events are defined to represent different places in the world of the game where obstacles will be present. In these two locations meteorites will appear every 4 and 8 seconds as to provide a challenging obstacle for the player, respectively.</p>
+<p>In Alien Miner two appearance events are defined to represent different places in the world of the game where obstacles will be present. In these two locations meteorites will appear every 4 and 8 seconds as to provide a challenging obstacle for the player.</p>
 </section>
 
 <img class="centered" src="res/activities.png" alt="PhyDSL Header 2" align="middle"> <br>
@@ -207,7 +207,7 @@ You can use the syntax directed editor to help you during the construction of a 
 <img class="centered" src="res/scoring-b.png" alt="PhyDSL Header 2" align="middle"> <br>
 
 <section class="main-content">
-<p>The signature of each scoring rule is different depending on its type. “Collision Rules” include the name of the actors that upon collision will activate or trigger the scoring rule. In turn, “Touch Rules” are defined by specifying the name of the actor that will trigger the rule if touched by the player. Finally, “Time rules” are specified by setting the total time in seconds that will set a countdown timer which zero-event will trigger the rule.</p>
+<p>The signature of each scoring rule is different depending on its type. “Collision Rules” include the name of the actors that, upon collision, will activate or trigger the scoring rule. In turn, “Touch Rules” are defined by specifying the name of the actor that will trigger the rule if touched by the player. Finally, “Time rules” are specified by setting the total time in seconds that will set a countdown timer which zero-event will trigger the rule.</p>
 
 <p>All scoring rules include three mandatory properties regardless of their type, namely “points”, “game ends”, and “haptic feedback”. The property “points” can positively or negatively affect the point count of the game. The property “game ends” indicates whether the rule will end the game immediately after the rule is triggered. Furthermore, the variable “haptic feedback” indicates whether the device will vibrate if the rule is triggered.</p>
 
@@ -219,7 +219,7 @@ You can use the syntax directed editor to help you during the construction of a 
 <h3>
 <a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.5. Defining The Game Controls</h3>
 
-<p>The sixth and final step on the creation of a gameplay design is to optionally specify a set of controls for the main actor of the game. This section is only available when the game has a main actor, and it particularly suitable for games in which touchscreen capabilities are disabled (see Section 2.3)</p>
+<p>The sixth and final step on the creation of a gameplay design is to optionally specify a set of controls for the main actor of the game. This section is only available when the game has a main actor, and it is particularly suitable for games in which touchscreen capabilities are disabled (see Section 2.3)</p>
 </section>
 
 <img class="centered" src="res/controls.png" alt="PhyDSL Header 2" align="middle"> <br>
@@ -239,7 +239,7 @@ You can use the syntax directed editor to help you during the construction of a 
 
 <p><strong>Note:</strong> The idea of having an independent generator, i.e. not integrated with Eclipse or other development environments, is to be flexible in front of multiple editors that can produce gamplay desing specifications. Since the PhyDSL editor is based on XText and EMF technologies, multiple graphical and textual editors can be generated automatially. Currently, the PhyDSL textual editor is provided as an Eclipse plugin. However, we will soon release its browser based and IntelliJ versions.</p>
 
-<p>In order generate the game model, please right click on your ".phy" file > PhyDSL Modeling > Generate Game Model. 
+<p>In order to generate the game model, please right click on your ".phy" file > PhyDSL Modeling > Generate Game Model. 
 Next, a ‘.xmi’ game representation of the game will appear next to the game definition file. This step needs to be repeated every time a modification is done to the gameplay design file. Please notice that you have to save the ".phy" file every time before generating a game model.</p>
 </section>
 
@@ -249,7 +249,7 @@ Next, a ‘.xmi’ game representation of the game will appear next to the game 
 <h3>
 <a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Running The PhyDSL Generation Engine</h3>
 
-<p>In order to generate the Eclipse Android project that conforms to the gameplay design file.</p>
+<p>To generate the Eclipse Android project that conforms to the gameplay design file:</p>
 
 <p>1.  Double click on the PhyDSL Generator file. </p>
 
@@ -262,9 +262,9 @@ Next, a ‘.xmi’ game representation of the game will appear next to the game 
 <h3>
 <a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. Importing The Generated Android Project</h3>
 
-<p>The generated project can be imported into Eclipse using the regular project import process. In eclipse please > right click on the package explore > Import... > Android> Existinf Android Code Into Workspace > Find the location of the generated project > Click Finish.</p>
+<p>The generated project can be imported into Eclipse using the regular project import process. In Eclipse please > right click on the package explore > Import... > Android> Existinf Android Code Into Workspace > Find the location of the generated project > Click Finish.</p>
 
-<p>Once the project is imported into eclipse you can modify the gameplay design file and regenerate the game. The imported version in eclipse will be updated automatically.</p>
+<p>Once the project is imported into Eclipse you can modify the gameplay design file and regenerate the game. The imported version in Eclipse will be updated automatically.</p>
 
 <p>We are currently working on integrating Android Studio generation capabilities to PhyDSL.</p>
 </section>
