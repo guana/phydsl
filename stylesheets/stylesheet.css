@@ -40,15 +40,14 @@ a {
 
 @media screen and (min-width: 42em) and (max-width: 64em) {
   .btn {
-    padding: 0.4rem 0.5rem;
+    padding: 0.4rem 0.7rem;
     font-size: 0.3rem; } }
 
 @media screen and (max-width: 42em) {
   .btn {
     display: block;
     width: 90%;
-    padding: 0.1rem;
-    font-size: 0.1rem; }
+    padding: 0.4rem;}
     .btn + .btn {
       margin-top: 1rem;
       margin-left: 0; } }
