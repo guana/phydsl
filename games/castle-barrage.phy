@@ -1,0 +1,198 @@
+Types:
+
+// Resources
+resource bird: "bird"
+resource ball: "ball"
+resource tower: "ctower"
+resource planet: "background"
+resource block: "granite"
+resource aBtn: "jump"
+
+// Elasticity
+elasticity zero: 0.0
+elasticity rock: 0.05
+elasticity wood: 0.5
+elasticity tennisBall: 2.0
+elasticity beachBall: 4.0
+
+//Friction (us)
+friction zero: 0.0
+friction teflon: 0.04
+friction ice: 0.1
+friction brick: 0.4
+friction rough: 0.7
+friction infinite: 100.0
+
+// Density g/cm^3
+density zero: 0.00
+density cork: 1.12
+density rubber: 1.2
+density stone: 2.3
+density granite: 2.6
+density glass: 2.7
+density lean: 11.3
+
+// Linear speed
+linear speed fast: (40.0, 0.0) 
+linear speed slow: (-5.0, 0.0) 
+
+// Angular Velocity
+angular velocity fast: 40.0
+angular velocity slow: 10.0
+angular velocity zero: 0.0
+
+// Gravity
+gravity moon: 4.0
+gravity earth: 9.8
+
+// Actor Sizes
+size quantum: 0.01
+size tiny: 0.2
+size teensy: 0.3
+size short: 0.4
+size medium: 2.0
+size small: 0.7
+size huge: 4.0
+
+// Actions
+force up: (0.0, -1.0)
+force down: (0.0, 3.0)
+force right: (2.0, 0.0)
+force left: (-2.0, 0.0)
+
+Game CastleBirds:
+
+	design actors:
+	
+	actor: bird (
+		density: cork 
+		elasticity: wood 
+		friction: infinite 
+		image: bird
+		size: teensy
+		shape: circle
+		mobility: dynamic 
+		type: main actor
+	)
+	
+	actor: ball (
+		density: zero 
+		elasticity:wood 
+		friction:rough 
+		image:ball 
+		size:tiny
+		shape: circle
+		mobility: dynamic 
+		type: concrete
+	)
+	
+	actor: block (
+		density: zero 
+		elasticity:wood 
+		friction:rough 
+		image:block 
+		size:short
+		shape: square
+		mobility: static 
+		type: abstract
+	)
+	
+	actor: brick (
+		density: zero 
+		elasticity:wood 
+		friction:rough 
+		image:block 
+		size:short
+		shape: square
+		mobility: static 
+		type: concrete
+	)
+	
+	actor: tower(
+		density: zero 
+		elasticity: rock 
+		friction: brick 
+		image: tower
+		size: quantum
+		shape: square
+		mobility: static
+		type: abstract
+	)
+	
+	design layout:
+		locate: bird (1.2, 1.0)
+		locate: tower (6.4, 0.6)
+		locate: block (0.0, 0.0)
+		locate: block (0.0, 0.4)
+		locate: block (0.0, 0.8)
+		locate: block (0.0, 1.2)
+		locate: block (0.0, 1.6)
+		locate: block (0.0, 2.0)
+		locate: block (0.0, 2.4)
+		locate: block (0.0, 2.8)
+		locate: block (0.0, 3.2)
+		locate: block (0.0, 3.6)
+		locate: block (0.0, 4.0)
+		locate: block (0.0, 4.4)
+	
+	design environment:
+		gravity: moon
+		background: (image: planet segments:1)
+		touchscreen enabled: false
+		camera: none  
+	
+	design activities:
+		appear activity shower(
+			actor:ball
+			frequency: 7.0
+			angular velocity: zero 
+			linear speed:slow
+			position:(6.0, 0.4) 
+		)
+		
+		appear activity start(
+			actor:ball
+			frequency: 6.0
+			angular velocity: zero 
+			linear speed:slow
+			position:(6.0, 3.0) 
+		)
+		
+		appear activity middle(
+			actor:ball
+			frequency: 11.0
+			angular velocity: zero 
+			linear speed:slow
+			position:(6.0, 2.2) 
+		)
+		
+		appear activity later(
+			actor:ball
+			frequency: 23.0
+			angular velocity: zero 
+			linear speed:slow
+			position:(6.0, 1.6) 
+		)
+	
+	design scoring rules: 
+		rule: levelEnd collision of bird with ball (
+			points:0
+			game ends:true
+			haptic feedback:false
+		)
+		
+		rule: timeup timed 60 seconds (
+			points:0
+			game ends:true
+			haptic feedback:false
+		)
+		
+		rule: pointsUp collision of block with ball (
+			points:50
+			game ends: false 
+			actor disappears:ball
+			haptic feedback:false
+		)
+		
+	design main actor controls:
+		control: jump (image: aBtn  position: (6.75, 3.5) moves: up)

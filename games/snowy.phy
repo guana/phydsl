@@ -1,0 +1,541 @@
+//C:\Users\ryfur\workspaceNeon\phydsl-gen\PhyDSLGenerator\games\PhyDSLTemplate
+
+Types:
+
+// Resources
+resource penguin: "peng"
+resource snowball: "snowball2"
+resource emerald: "emerald"
+resource ruby: "ruby"
+resource brick: "icleblock"
+resource block: "snow_block"
+resource planet: "background"
+resource rightBtn: "arrow_right"
+resource leftBtn: "arrow_left"
+resource aBtn: "jump"
+resource diamond: "diamond"
+resource exit: "castledoors"
+
+// Elasticity
+elasticity zero: 0.0
+elasticity rock: 0.05
+elasticity wood: 0.5
+elasticity tennisBall: 2.0
+elasticity beachBall: 4.0
+
+//Friction (us)
+friction zero: 0.0
+friction teflon: 0.04
+friction ice: 0.1
+friction brick: 0.4
+friction rough: 0.7
+friction infinite: 100.0
+
+// Density g/cm^3
+density zero: 0.00
+density cork: 1.12
+density rubber: 1.2
+density stone: 2.3
+density granite: 2.6
+density glass: 2.7
+density lean: 11.3
+
+// Linear speed
+linear speed fast: (40.0, 40.0) 
+linear speed slow: (10.0, 10.0) 
+
+// Angular Velocity
+angular velocity fast: 40.0
+angular velocity slow: 10.0
+
+// Gravity
+gravity moon: 4.0
+gravity earth: 9.8
+
+// Actor Sizes
+size tiny: 0.2
+size teensy: 0.3
+size short: 0.4
+size medium: 0.45
+size small: 2.0
+size huge: 8.0
+
+// Actions
+force up: (0.0, -3.0)
+force down: (0.0, 3.0)
+force right: (1.5, 0.0)
+force left: (-1.5, 0.0)
+
+Game penguin:
+
+	design actors:
+	
+	actor: penguin (
+		density: cork 
+		elasticity: rock 
+		friction: infinite 
+		image: penguin
+		size: teensy
+		shape: circle
+		mobility: dynamic 
+		type: main actor
+	)
+	
+	actor: snowball (
+		density: granite 
+		elasticity:wood 
+		friction:rough 
+		image:snowball 
+		size:small
+		shape: circle
+		mobility: dynamic 
+		type: concrete
+	)
+	
+	actor: brick(
+		density: cork 
+		elasticity: rock 
+		friction: brick 
+		image: brick
+		size: teensy
+		shape: square
+		mobility: static
+		type: concrete
+	)
+	
+	actor: block(
+		density: cork 
+		elasticity: rock 
+		friction: brick 
+		image: block
+		size: teensy
+		shape: square
+		mobility: static
+		type: concrete
+	)
+	
+	actor: emerald(
+		density: zero
+		elasticity: zero
+		friction: zero
+		image: emerald
+		size: teensy
+		shape: circle
+		mobility: static
+		type: concrete
+	)
+	
+	actor: ruby(
+		density: zero
+		elasticity: zero
+		friction: zero
+		image: ruby
+		size: teensy
+		shape: circle
+		mobility: static
+		type: concrete
+	)
+	
+	actor: exit(
+		density: zero
+		elasticity: zero
+		friction: zero
+		image: exit
+		size: short
+		shape: square
+		mobility: static
+		type: concrete
+	)
+	
+	design layout:
+		locate: penguin (1.0, 1.0)
+		locate: brick (16.5, 0.0)
+		locate: brick (22.0, 0.0)
+		locate: brick (71.5, 0.0)
+		locate: brick (16.5, 0.5)
+		locate: brick (22.0, 0.5)
+		locate: brick (71.5, 0.5)
+		locate: brick (22.0, 1.0)
+		locate: brick (59.5, 1.0)
+		locate: brick (71.5, 1.0)
+		locate: brick (22.0, 1.5)
+		locate: brick (51.0, 1.5)
+		locate: brick (59.5, 1.5)
+		locate: exit (71.05, 1.5)
+		locate: brick (71.5, 1.5)
+		locate: brick (22.0, 2.0)
+		locate: brick (51.0, 2.0)
+		locate: brick (59.5, 2.0)
+		locate: brick (63.0, 2.0)
+		locate: brick (63.5, 2.0)
+		locate: brick (64.0, 2.0)
+		locate: brick (64.5, 2.0)
+		locate: brick (65.0, 2.0)
+		locate: brick (65.5, 2.0)
+		locate: brick (66.0, 2.0)
+		locate: brick (66.5, 2.0)
+		locate: brick (67.0, 2.0)
+		locate: brick (67.5, 2.0)
+		locate: brick (68.0, 2.0)
+		locate: brick (68.5, 2.0)
+		locate: brick (69.0, 2.0)
+		locate: brick (69.5, 2.0)
+		locate: brick (70.0, 2.0)
+		locate: brick (70.5, 2.0)
+		locate: brick (71.0, 2.0)
+		locate: brick (71.5, 2.0)
+		locate: brick (22.0, 2.5)
+		locate: brick (51.0, 2.5)
+		locate: ruby (52.0, 2.5)
+		locate: brick (59.5, 2.5)
+		locate: brick (71.5, 2.5)
+		locate: brick (17.5, 3.0)
+		locate: brick (22.0, 3.0)
+		locate: brick (51.0, 3.0)
+		locate: brick (51.5, 3.0)
+		locate: brick (52.0, 3.0)
+		locate: brick (52.5, 3.0)
+		locate: brick (53.0, 3.0)
+		locate: brick (59.5, 3.0)
+		locate: brick (71.5, 3.0)
+		locate: brick (17.5, 3.5)
+		locate: brick (22.0, 3.5)
+		locate: brick (71.5, 3.5)
+		locate: brick (7.5, 4.0)
+		locate: brick (8.0, 4.0)
+		locate: brick (8.5, 4.0)
+		locate: brick (9.0, 4.0)
+		locate: brick (9.5, 4.0)
+		locate: brick (10.0, 4.0)
+		locate: brick (10.5, 4.0)
+		locate: brick (11.0, 4.0)
+		locate: brick (11.5, 4.0)
+		locate: brick (12.0, 4.0)
+		locate: brick (12.5, 4.0)
+		locate: brick (13.0, 4.0)
+		locate: brick (13.5, 4.0)
+		locate: brick (14.0, 4.0)
+		locate: brick (14.5, 4.0)
+		locate: brick (15.0, 4.0)
+		locate: brick (18.5, 4.0)
+		locate: brick (22.0, 4.0)
+		locate: brick (71.5, 4.0)
+		locate: brick (18.5, 4.5)
+		locate: brick (22.0, 4.5)
+		locate: brick (62.0, 4.5)
+		locate: brick (62.5, 4.5)
+		locate: emerald (71.5, 4.5)
+		locate: brick (71.5, 4.5)
+		locate: brick (19.0, 5.0)
+		locate: brick (22.0, 5.0)
+		locate: brick (30.0, 5.0)
+		locate: brick (30.5, 5.0)
+		locate: brick (31.0, 5.0)
+		locate: brick (31.5, 5.0)
+		locate: brick (32.0, 5.0)
+		locate: brick (32.5, 5.0)
+		locate: brick (33.0, 5.0)
+		locate: brick (33.5, 5.0)
+		locate: brick (34.0, 5.0)
+		locate: brick (34.5, 5.0)
+		locate: brick (35.0, 5.0)
+		locate: brick (35.5, 5.0)
+		locate: brick (36.0, 5.0)
+		locate: brick (36.5, 5.0)
+		locate: brick (37.0, 5.0)
+		locate: brick (37.5, 5.0)
+		locate: brick (38.0, 5.0)
+		locate: brick (38.5, 5.0)
+		locate: brick (39.0, 5.0)
+		locate: brick (39.5, 5.0)
+		locate: brick (40.0, 5.0)
+		locate: brick (40.5, 5.0)
+		locate: brick (41.0, 5.0)
+		locate: brick (41.5, 5.0)
+		locate: brick (42.0, 5.0)
+		locate: brick (42.5, 5.0)
+		locate: brick (43.0, 5.0)
+		locate: brick (43.5, 5.0)
+		locate: brick (44.0, 5.0)
+		locate: brick (44.5, 5.0)
+		locate: brick (45.0, 5.0)
+		locate: brick (45.5, 5.0)
+		locate: brick (46.0, 5.0)
+		locate: brick (46.5, 5.0)
+		locate: brick (47.0, 5.0)
+		locate: brick (47.5, 5.0)
+		locate: brick (48.0, 5.0)
+		locate: brick (54.5, 5.0)
+		locate: brick (55.0, 5.0)
+		locate: brick (55.5, 5.0)
+		locate: brick (56.0, 5.0)
+		locate: brick (67.5, 5.0)
+		locate: brick (68.0, 5.0)
+		locate: brick (68.5, 5.0)
+		locate: brick (69.0, 5.0)
+		locate: brick (69.5, 5.0)
+		locate: brick (70.0, 5.0)
+		locate: brick (70.5, 5.0)
+		locate: brick (71.0, 5.0)
+		locate: brick (71.5, 5.0)
+		locate: brick (19.0, 5.5)
+		locate: ruby (20.0, 5.5)
+		locate: brick (22.0, 5.5)
+		locate: brick (48.0, 5.5)
+		locate: brick (71.5, 5.5)
+		locate: brick (19.0, 6.0)
+		locate: brick (19.5, 6.0)
+		locate: brick (20.0, 6.0)
+		locate: brick (20.5, 6.0)
+		locate: brick (21.0, 6.0)
+		locate: brick (21.5, 6.0)
+		locate: brick (22.0, 6.0)
+		locate: brick (23.5, 6.0)
+		locate: brick (48.0, 6.0)
+		locate: brick (71.5, 6.0)
+		locate: brick (22.0, 6.5)
+		locate: brick (48.0, 6.5)
+		locate: brick (53.5, 6.5)
+		locate: brick (71.5, 6.5)
+		locate: brick (22.0, 7.0)
+		locate: brick (25.0, 7.0)
+		locate: brick (48.0, 7.0)
+		locate: brick (71.5, 7.0)
+		locate: brick (6.5, 7.5)
+		locate: brick (12.0, 7.5)
+		locate: brick (12.5, 7.5)
+		locate: brick (13.0, 7.5)
+		locate: brick (13.5, 7.5)
+		locate: brick (14.0, 7.5)
+		locate: brick (14.5, 7.5)
+		locate: brick (15.0, 7.5)
+		locate: brick (15.5, 7.5)
+		locate: brick (16.0, 7.5)
+		locate: brick (16.5, 7.5)
+		locate: brick (17.0, 7.5)
+		locate: brick (17.5, 7.5)
+		locate: brick (22.0, 7.5)
+		locate: brick (48.0, 7.5)
+		locate: brick (59.5, 7.5)
+		locate: brick (60.0, 7.5)
+		locate: brick (62.5, 7.5)
+		locate: brick (63.0, 7.5)
+		locate: brick (63.5, 7.5)
+		locate: brick (64.0, 7.5)
+		locate: brick (64.5, 7.5)
+		locate: brick (65.0, 7.5)
+		locate: brick (71.5, 7.5)
+		locate: brick (22.0, 8.0)
+		locate: brick (48.0, 8.0)
+		locate: brick (59.5, 8.0)
+		locate: brick (71.5, 8.0)
+		locate: brick (19.0, 8.5)
+		locate: brick (19.5, 8.5)
+		locate: brick (20.0, 8.5)
+		locate: brick (22.0, 8.5)
+		locate: brick (48.0, 8.5)
+		locate: brick (56.5, 8.5)
+		locate: brick (57.0, 8.5)
+		locate: brick (57.5, 8.5)
+		locate: brick (58.0, 8.5)
+		locate: brick (59.5, 8.5)
+		locate: brick (71.5, 8.5)
+		locate: brick (22.0, 9.0)
+		locate: emerald (23.5, 9.0)
+		locate: brick (26.5, 9.0)
+		locate: brick (48.0, 9.0)
+		locate: brick (59.5, 9.0)
+		locate: brick (71.5, 9.0)
+		locate: emerald (3.5, 9.5)
+		locate: brick (22.0, 9.5)
+		locate: emerald (23.5, 9.5)
+		locate: brick (26.5, 9.5)
+		locate: brick (48.0, 9.5)
+		locate: brick (59.5, 9.5)
+		locate: brick (71.5, 9.5)
+		locate: brick (3.0, 10.0)
+		locate: brick (3.5, 10.0)
+		locate: brick (4.0, 10.0)
+		locate: brick (4.5, 10.0)
+		locate: brick (5.0, 10.0)
+		locate: brick (22.0, 10.0)
+		locate: brick (48.0, 10.0)
+		locate: emerald (49.0, 10.0)
+		locate: brick (59.5, 10.0)
+		locate: brick (63.0, 10.0)
+		locate: brick (63.5, 10.0)
+		locate: brick (64.0, 10.0)
+		locate: brick (64.5, 10.0)
+		locate: brick (65.0, 10.0)
+		locate: brick (65.5, 10.0)
+		locate: brick (66.0, 10.0)
+		locate: brick (66.5, 10.0)
+		locate: brick (67.0, 10.0)
+		locate: brick (67.5, 10.0)
+		locate: brick (71.5, 10.0)
+		locate: brick (10.0, 10.5)
+		locate: brick (10.5, 10.5)
+		locate: brick (11.0, 10.5)
+		locate: brick (11.5, 10.5)
+		locate: brick (12.0, 10.5)
+		locate: brick (12.5, 10.5)
+		locate: brick (13.0, 10.5)
+		locate: brick (13.5, 10.5)
+		locate: brick (14.0, 10.5)
+		locate: brick (14.5, 10.5)
+		locate: brick (15.0, 10.5)
+		locate: brick (15.5, 10.5)
+		locate: brick (16.0, 10.5)
+		locate: brick (16.5, 10.5)
+		locate: brick (17.0, 10.5)
+		locate: brick (17.5, 10.5)
+		locate: brick (22.0, 10.5)
+		locate: brick (22.5, 10.5)
+		locate: brick (23.0, 10.5)
+		locate: brick (23.5, 10.5)
+		locate: brick (24.0, 10.5)
+		locate: brick (24.5, 10.5)
+		locate: brick (25.0, 10.5)
+		locate: brick (25.5, 10.5)
+		locate: brick (26.0, 10.5)
+		locate: brick (26.5, 10.5)
+		locate: brick (27.0, 10.5)
+		locate: brick (27.5, 10.5)
+		locate: brick (28.0, 10.5)
+		locate: brick (28.5, 10.5)
+		locate: brick (29.0, 10.5)
+		locate: brick (29.5, 10.5)
+		locate: brick (30.0, 10.5)
+		locate: brick (30.5, 10.5)
+		locate: brick (31.0, 10.5)
+		locate: brick (31.5, 10.5)
+		locate: brick (32.0, 10.5)
+		locate: brick (32.5, 10.5)
+		locate: brick (33.0, 10.5)
+		locate: brick (33.5, 10.5)
+		locate: brick (34.0, 10.5)
+		locate: brick (34.5, 10.5)
+		locate: brick (35.0, 10.5)
+		locate: brick (35.5, 10.5)
+		locate: brick (36.0, 10.5)
+		locate: brick (36.5, 10.5)
+		locate: brick (37.0, 10.5)
+		locate: brick (37.5, 10.5)
+		locate: brick (38.0, 10.5)
+		locate: brick (48.0, 10.5)
+		locate: emerald (49.0, 10.5)
+		locate: brick (59.5, 10.5)
+		locate: brick (71.5, 10.5)
+		locate: brick (48.0, 11.0)
+		locate: brick (48.5, 11.0)
+		locate: brick (55.0, 11.0)
+		locate: brick (55.5, 11.0)
+		locate: brick (56.0, 11.0)
+		locate: brick (56.5, 11.0)
+		locate: brick (59.5, 11.0)
+		locate: brick (71.5, 11.0)
+		locate: brick (48.0, 11.5)
+		locate: brick (48.5, 11.5)
+		locate: brick (59.5, 11.5)
+		locate: brick (71.5, 11.5)
+		locate: brick (7.0, 12.0)
+		locate: brick (7.5, 12.0)
+		locate: brick (8.0, 12.0)
+		locate: brick (8.5, 12.0)
+		locate: brick (9.0, 12.0)
+		locate: brick (9.5, 12.0)
+		locate: brick (41.5, 12.0)
+		locate: brick (42.0, 12.0)
+		locate: brick (42.5, 12.0)
+		locate: brick (43.0, 12.0)
+		locate: brick (48.0, 12.0)
+		locate: brick (71.5, 12.0)
+		locate: brick (48.0, 12.5)
+		locate: brick (71.5, 12.5)
+		locate: brick (24.5, 13.0)
+		locate: brick (48.0, 13.0)
+		locate: brick (71.5, 13.0)
+		locate: brick (12.0, 13.0)
+		locate: brick (12.5, 13.0)
+		locate: brick (13.0, 13.0)
+		locate: brick (13.0, 13.0)
+		locate: brick (14.0, 13.0)
+		locate: brick (14.5, 13.0)
+		locate: brick (15.0, 13.0)
+		locate: brick (15.5, 13.0)
+		locate: brick (16.0, 13.0)
+		locate: brick (16.5, 13.0)
+		locate: brick (17.0, 13.0)
+		locate: brick (17.5, 13.0)
+		locate: brick (18.0, 13.0)
+		locate: brick (18.5, 13.0)
+		locate: brick (19.0, 13.0)
+		locate: brick (19.5, 13.0)
+		locate: brick (24.5, 13.0)
+		locate: emerald (33.5, 13.5)
+		locate: brick (43.5, 13.5)
+		locate: brick (44.0, 13.5)
+		locate: brick (48.0, 13.5)
+		locate: brick (71.5, 13.5)
+
+	design environment:
+		gravity: earth
+		background: (image: planet segments:11)
+		touchscreen enabled: false
+		camera: continuous  
+	
+	design activities:
+		appear activity shower(
+			actor:snowball
+			frequency:4.0
+			angular velocity: slow 
+			linear speed:slow
+			position:(2.0, 4.0) 
+		)
+		
+		appear activity middle(
+			actor:snowball
+			frequency:8.0
+			angular velocity: slow 
+			linear speed:slow
+			position:(40.0, 4.0) 
+		)
+	
+	design scoring rules: 
+		rule: pointsUp collision of penguin with emerald (
+			points:30
+			game ends:false 
+			actor disappears:emerald 
+			haptic feedback:false
+		)
+		
+		rule: pointsUp collision of penguin with ruby (
+			points: 100
+			game ends:false 
+			actor disappears: ruby 
+			haptic feedback:false
+		)
+		
+		rule: pointsDown collision of penguin with snowball (
+			points:-20 
+			game ends:false 
+			actor disappears:snowball 
+			haptic feedback:false
+		)
+		
+		rule: timeup timed 120 seconds (
+			points:0
+			game ends:true
+			haptic feedback:false
+		)
+		
+		rule: levelEnd collision of penguin with exit (
+			points:0 
+			game ends: true 
+			haptic feedback:false
+		)
+		
+	design main actor controls:
+		control: jump (image: aBtn  position: (6.75, 3.7) moves: up)
+		control: right (image: rightBtn  position: (1.0, 3.7) moves: right)
+		control: left (image: leftBtn  position: (0.1, 3.7) moves: left)

@@ -1,0 +1,500 @@
+Types:
+
+// Resources
+resource ball: "ball"
+resource diamond: "diamond"
+resource planet: "background"
+resource brick: "granite"
+resource block: "block"
+resource exit: "goal"
+resource lava: "lava"
+resource up: "up"
+resource down: "down"
+resource left: "left"
+resource right: "right"
+
+// Elasticity
+elasticity zero: 0.0
+elasticity rock: 0.05
+elasticity wood: 0.5
+elasticity tennisBall: 2.0
+elasticity beachBall: 4.0
+
+//Friction (us)
+friction zero: 0.0
+friction teflon: 0.04
+friction ice: 0.1
+friction brick: 0.4
+friction rough: 0.7
+friction infinite: 100.0
+
+// Density g/cm^3
+density zero: 0.00
+density cork: 1.12
+density rubber: 1.2
+density stone: 2.3
+density granite: 2.6
+density glass: 2.7
+density lean: 11.3
+
+// Linear speed
+linear speed fast: (40.0, 0.0) 
+linear speed slow: (-10.0, 0.0) 
+
+// Angular Velocity
+angular velocity fast: 40.0
+angular velocity slow: 10.0
+angular velocity zero: 0.0
+
+// Gravity
+gravity space: 0.0
+gravity moon: 4.0
+gravity earth: 9.8
+
+// Actor Sizes
+size tiny: 0.2
+size teensy: 0.3
+size short: 0.4
+size medium: 2.0
+size small: 1.0
+size huge: 4.0
+
+// Actions
+force up: (0.0, -1.0)
+force down: (0.0, 1.0)
+force right: (2.0, 0.0)
+force left: (-2.0, 0.0)
+
+Game Maze:
+
+	design actors:
+	
+	actor: ball (
+		density: cork 
+		elasticity: wood 
+		friction: infinite 
+		image: ball
+		size: teensy
+		shape: circle
+		mobility: dynamic 
+		type: main actor
+	)
+	
+	actor: brick (
+		density: stone 
+		elasticity:wood 
+		friction:rough 
+		image:brick 
+		size:teensy
+		shape: square
+		mobility: static 
+		type: concrete
+	)
+	
+	actor: exit (
+		density: zero 
+		elasticity:wood 
+		friction:rough 
+		image:exit 
+		size:short
+		shape: circle
+		mobility: static 
+		type: concrete
+	)
+	
+	actor: bounce (
+		density: zero 
+		elasticity:tennisBall 
+		friction:rough 
+		image:block 
+		size:teensy
+		shape: square
+		mobility: static 
+		type: concrete
+	)
+	
+	actor: diamond (
+		density: zero 
+		elasticity:wood 
+		friction:rough 
+		image:diamond 
+		size:tiny
+		shape: square
+		mobility: static 
+		type: concrete
+	)
+	
+	actor: lava (
+		density: zero 
+		elasticity:wood 
+		friction:rough 
+		image:lava 
+		size:teensy
+		shape: square
+		mobility: static 
+		type: concrete
+	)
+	
+	
+	
+	design layout:
+		locate: ball (2.0, 1.0)
+		locate: lava (11.0, 0.0)
+		locate: lava (19.0, 0.0)
+		locate: brick (28.0, 0.0)
+		locate: lava (11.0, 0.5)
+		locate: lava (19.0, 0.5)
+		locate: brick (28.0, 0.5)
+		locate: lava (11.0, 1.0)
+		locate: lava (19.0, 1.0)
+		locate: brick (28.0, 1.0)
+		locate: lava (11.0, 1.5)
+		locate: lava (15.0, 1.5)
+		locate: lava (19.0, 1.5)
+		locate: lava (23.0, 1.5)
+		locate: brick (28.0, 1.5)
+		locate: lava (11.0, 2.0)
+		locate: lava (15.0, 2.0)
+		locate: lava (19.0, 2.0)
+		locate: lava (23.0, 2.0)
+		locate: brick (28.0, 2.0)
+		locate: brick (0.0, 2.5)
+		locate: brick (0.5, 2.5)
+		locate: brick (1.0, 2.5)
+		locate: brick (1.5, 2.5)
+		locate: brick (2.0, 2.5)
+		locate: brick (2.5, 2.5)
+		locate: brick (3.0, 2.5)
+		locate: brick (3.5, 2.5)
+		locate: brick (4.0, 2.5)
+		locate: brick (4.5, 2.5)
+		locate: brick (5.0, 2.5)
+		locate: brick (5.5, 2.5)
+		locate: brick (6.0, 2.5)
+		locate: brick (6.5, 2.5)
+		locate: brick (7.0, 2.5)
+		locate: brick (7.5, 2.5)
+		locate: brick (8.0, 2.5)
+		locate: lava (11.0, 2.5)
+		locate: lava (15.0, 2.5)
+		locate: lava (19.0, 2.5)
+		locate: lava (23.0, 2.5)
+		locate: brick (28.0, 2.5)
+		locate: brick (0.0, 3.0)
+		locate: lava (11.0, 3.0)
+		locate: exit (12.0, 3.0)
+		locate: lava (15.0, 3.0)
+		locate: lava (23.0, 3.0)
+		locate: brick (28.0, 3.0)
+		locate: lava (0.0, 3.5)
+		locate: lava (11.0, 3.5)
+		locate: lava (15.0, 3.5)
+		locate: lava (23.0, 3.5)
+		locate: brick (28.0, 3.5)
+		locate: lava (0.0, 4.0)
+		locate: lava (11.0, 4.0)
+		locate: lava (15.0, 4.0)
+		locate: lava (23.0, 4.0)
+		locate: brick (28.0, 4.0)
+		locate: lava (0.0, 4.5)
+		locate: lava (11.0, 4.5)
+		locate: lava (15.0, 4.5)
+		locate: lava (23.0, 4.5)
+		locate: brick (28.0, 4.5)
+		locate: brick (0.0, 5.0)
+		locate: brick (4.0, 5.0)
+		locate: brick (4.5, 5.0)
+		locate: brick (5.0, 5.0)
+		locate: brick (5.5, 5.0)
+		locate: brick (6.0, 5.0)
+		locate: brick (6.5, 5.0)
+		locate: brick (7.0, 5.0)
+		locate: brick (7.5, 5.0)
+		locate: brick (8.0, 5.0)
+		locate: brick (8.5, 5.0)
+		locate: brick (9.0, 5.0)
+		locate: brick (9.5, 5.0)
+		locate: brick (10.0, 5.0)
+		locate: brick (10.5, 5.0)
+		locate: brick (11.0, 5.0)
+		locate: brick (11.5, 5.0)
+		locate: brick (12.0, 5.0)
+		locate: brick (12.5, 5.0)
+		locate: brick (13.0, 5.0)
+		locate: brick (13.5, 5.0)
+		locate: brick (14.0, 5.0)
+		locate: brick (14.5, 5.0)
+		locate: brick (15.0, 5.0)
+		locate: brick (15.5, 5.0)
+		locate: brick (16.0, 5.0)
+		locate: brick (16.5, 5.0)
+		locate: brick (17.0, 5.0)
+		locate: brick (17.5, 5.0)
+		locate: brick (18.0, 5.0)
+		locate: brick (18.5, 5.0)
+		locate: brick (19.0, 5.0)
+		locate: brick (19.5, 5.0)
+		locate: brick (20.0, 5.0)
+		locate: brick (20.5, 5.0)
+		locate: brick (21.0, 5.0)
+		locate: brick (21.5, 5.0)
+		locate: brick (22.0, 5.0)
+		locate: brick (22.5, 5.0)
+		locate: brick (23.0, 5.0)
+		locate: brick (23.5, 5.0)
+		locate: brick (24.0, 5.0)
+		locate: brick (28.0, 5.0)
+		locate: lava (0.0, 5.5)
+		locate: brick (8.0, 5.5)
+		locate: brick (15.5, 5.5)
+		locate: brick (24.0, 5.5)
+		locate: brick (28.0, 5.5)
+		locate: lava (0.0, 6.0)
+		locate: diamond (6.0, 6.0)
+		locate: brick (8.0, 6.0)
+		locate: diamond (12.5, 6.0)
+		locate: brick (15.5, 6.0)
+		locate: brick (24.0, 6.0)
+		locate: brick (28.0, 6.0)
+		locate: lava (0.0, 6.5)
+		locate: brick (8.0, 6.5)
+		locate: brick (15.5, 6.5)
+		locate: brick (24.0, 6.5)
+		locate: brick (28.0, 6.5)
+		locate: brick (0.0, 7.0)
+		locate: brick (8.0, 7.0)
+		locate: brick (15.5, 7.0)
+		locate: brick (24.0, 7.0)
+		locate: brick (28.0, 7.0)
+		locate: brick (0.0, 7.5)
+		locate: brick (5.0, 7.5)
+		locate: brick (5.5, 7.5)
+		locate: brick (6.0, 7.5)
+		locate: brick (6.5, 7.5)
+		locate: brick (7.0, 7.5)
+		locate: brick (7.5, 7.5)
+		locate: brick (8.0, 7.5)
+		locate: brick (15.5, 7.5)
+		locate: brick (19.5, 7.5)
+		locate: brick (24.0, 7.5)
+		locate: brick (28.0, 7.5)
+		locate: brick (0.0, 8.0)
+		locate: brick (5.0, 8.0)
+		locate: bounce (6.5, 8.0)
+		locate: brick (15.5, 8.0)
+		locate: brick (19.5, 8.0)
+		locate: brick (24.0, 8.0)
+		locate: brick (28.0, 8.0)
+		locate: brick (0.0, 8.5)
+		locate: diamond (2.0, 8.5)
+		locate: brick (5.0, 8.5)
+		locate: brick (15.5, 8.5)
+		locate: brick (19.5, 8.5)
+		locate: brick (24.0, 8.5)
+		locate: brick (28.0, 8.5)
+		locate: brick (0.0, 9.0)
+		locate: bounce (4.5, 9.0)
+		locate: brick (5.0, 9.0)
+		locate: brick (15.5, 9.0)
+		locate: brick (19.5, 9.0)
+		locate: brick (24.0, 9.0)
+		locate: brick (28.0, 9.0)
+		locate: brick (0.0, 9.5)
+		locate: bounce (2.0, 9.5)
+		locate: brick (5.0, 9.5)
+		locate: bounce (8.0, 9.5)
+		locate: brick (11.0, 9.5)
+		locate: brick (15.5, 9.5)
+		locate: brick (19.5, 9.5)
+		locate: brick (24.0, 9.5)
+		locate: brick (28.0, 9.5)
+		locate: brick (0.0, 10.0)
+		locate: brick (5.0, 10.0)
+		locate: brick (11.0, 10.0)
+		locate: brick (19.5, 10.0)
+		locate: brick (24.0, 10.0)
+		locate: brick (28.0, 10.0)
+		locate: brick (0.0, 10.5)
+		locate: brick (5.0, 10.5)
+		locate: brick (11.0, 10.5)
+		locate: brick (19.5, 10.5)
+		locate: brick (24.0, 10.5)
+		locate: brick (28.0, 10.5)
+		locate: brick (0.0, 11.0)
+		locate: brick (5.0, 11.0)
+		locate: brick (11.0, 11.0)
+		locate: brick (19.5, 11.0)
+		locate: brick (24.0, 11.0)
+		locate: brick (28.0, 11.0)
+		locate: brick (0.0, 11.5)
+		locate: brick (5.0, 11.5)
+		locate: bounce (7.0, 11.5)
+		locate: brick (11.0, 11.5)
+		locate: brick (19.5, 11.5)
+		locate: brick (24.0, 11.5)
+		locate: brick (28.0, 11.5)
+		locate: brick (0.0, 12.0)
+		locate: brick (5.0, 12.0)
+		locate: brick (11.0, 12.0)
+		locate: bounce (14.5, 12.0)
+		locate: brick (19.5, 12.0)
+		locate: lava (24.0, 12.0)
+		locate: brick (28.0, 12.0)
+		locate: brick (0.0, 12.5)
+		locate: brick (5.0, 12.5)
+		locate: brick (11.0, 12.5)
+		locate: brick (19.5, 12.5)
+		locate: lava (23.5, 12.5)
+		locate: lava (24.0, 12.5)
+		locate: lava (24.5, 12.5)
+		locate: brick (28.0, 12.5)
+		locate: brick (0.0, 13.0)
+		locate: bounce (2.0, 13.0)
+		locate: brick (11.0, 13.0)
+		locate: bounce (16.5, 13.0)
+		locate: brick (19.5, 13.0)
+		locate: lava (24.0, 13.0)
+		locate: brick (28.0, 13.0)
+		locate: brick (0.0, 13.5)
+		locate: brick (11.0, 13.5)
+		locate: brick (19.5, 13.5)
+		locate: bounce (20.0, 13.5)
+		locate: bounce (27.5, 13.5)
+		locate: brick (28.0, 13.5)
+		locate: brick (0.0, 14.0)
+		locate: bounce (9.0, 14.0)
+		locate: brick (11.0, 14.0)
+		locate: brick (19.5, 14.0)
+		locate: bounce (20.0, 14.0)
+		locate: bounce (20.5, 14.0)
+		locate: bounce (27.0, 14.0)
+		locate: bounce (27.5, 14.0)
+		locate: brick (28.0, 14.0)
+		locate: brick (0.0, 14.5)
+		locate: brick (11.0, 14.5)
+		locate: diamond (13.0, 14.5)
+		locate: brick (19.5, 14.5)
+		locate: bounce (20.0, 14.5)
+		locate: bounce (20.5, 14.5)
+		locate: bounce (21.0, 14.5)
+		locate: bounce (26.5, 14.5)
+		locate: bounce (27.0, 14.5)
+		locate: bounce (27.5, 14.5)
+		locate: brick (28.0, 14.5)
+		locate: brick (0.0, 15.0)
+		locate: diamond (1.0, 15.0)
+		locate: bounce (5.0, 15.0)
+		locate: brick (11.0, 15.0)
+		locate: brick (19.5, 15.0)
+		locate: bounce (20.0, 15.0)
+		locate: bounce (20.5, 15.0)
+		locate: bounce (21.0, 15.0)
+		locate: bounce (21.5, 15.0)
+		locate: bounce (26.0, 15.0)
+		locate: bounce (26.5, 15.0)
+		locate: bounce (27.0, 15.0)
+		locate: bounce (27.5, 15.0)
+		locate: brick (28.0, 15.0)
+		locate: brick (0.0, 15.5)
+		locate: lava (0.5, 15.5)
+		locate: lava (1.0, 15.5)
+		locate: lava (1.5, 15.5)
+		locate: lava (2.0, 15.5)
+		locate: lava (2.5, 15.5)
+		locate: lava (3.0, 15.5)
+		locate: lava (3.5, 15.5)
+		locate: lava (4.0, 15.5)
+		locate: lava (4.5, 15.5)
+		locate: lava (5.0, 15.5)
+		locate: lava (5.5, 15.5)
+		locate: lava (6.0, 15.5)
+		locate: lava (6.5, 15.5)
+		locate: lava (7.0, 15.5)
+		locate: lava (7.5, 15.5)
+		locate: lava (8.0, 15.5)
+		locate: lava (8.5, 15.5)
+		locate: lava (9.0, 15.5)
+		locate: lava (9.5, 15.5)
+		locate: lava (10.0, 15.5)
+		locate: lava (10.5, 15.5)
+		locate: brick (11.0, 15.5)
+		locate: brick (11.5, 15.5)
+		locate: brick (12.0, 15.5)
+		locate: brick (12.5, 15.5)
+		locate: brick (13.0, 15.5)
+		locate: brick (13.5, 15.5)
+		locate: brick (14.0, 15.5)
+		locate: brick (14.5, 15.5)
+		locate: brick (15.0, 15.5)
+		locate: brick (15.5, 15.5)
+		locate: brick (16.0, 15.5)
+		locate: brick (16.5, 15.5)
+		locate: brick (17.0, 15.5)
+		locate: brick (17.5, 15.5)
+		locate: brick (18.0, 15.5)
+		locate: brick (18.5, 15.5)
+		locate: brick (19.0, 15.5)
+		locate: brick (19.5, 15.5)
+		locate: brick (20.0, 15.5)
+		locate: brick (20.5, 15.5)
+		locate: brick (21.0, 15.5)
+		locate: brick (21.5, 15.5)
+		locate: brick (22.0, 15.5)
+		locate: brick (22.5, 15.5)
+		locate: brick (23.0, 15.5)
+		locate: brick (23.5, 15.5)
+		locate: brick (24.0, 15.5)
+		locate: brick (24.5, 15.5)
+		locate: brick (25.0, 15.5)
+		locate: brick (25.5, 15.5)
+		locate: brick (26.0, 15.5)
+		locate: brick (26.5, 15.5)
+		locate: brick (27.0, 15.5)
+		locate: brick (27.5, 15.5)
+		locate: brick (28.0, 15.5)
+	
+	design environment:
+		gravity: space
+		background: (image: planet segments:4)
+		touchscreen enabled: false
+		camera: continuous
+	
+	design activities:
+	appear activity shower(
+			actor:ball
+			frequency: 1000.0
+			angular velocity: zero 
+			linear speed:slow
+			position:(6.0, 1.0) 
+		)
+	
+	design scoring rules:
+		rule: pointsUp collision of ball with diamond (
+			points: 100
+			game ends:false
+			actor disappears: diamond
+			haptic feedback:false
+		)
+		
+		rule: pointsDown collision of ball with lava (
+			points:-50 
+			game ends:false
+			haptic feedback:false
+		)
+		rule: timeup timed 120 seconds (
+			points:0
+			game ends:true
+			haptic feedback:false
+		)
+		
+		rule: levelEnd collision of ball with exit (
+			points:200 
+			game ends: true 
+			haptic feedback:false
+		)
+		
+	design main actor controls:
+		control: up (image: up  position: (6.4, 2.7) moves: up)
+		control: down (image: down  position: (6.4, 4.1) moves: down)
+		control: left (image: left  position: (5.7, 3.4) moves: left)
+		control: right (image: right  position: (7.1, 3.4) moves: right)
