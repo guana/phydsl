@@ -18,16 +18,16 @@
       <a href="tutorial.html" class="btn">Features and Tutorial</a>
       <a href="catalogue.html" class="btn">Game Catalogue</a>
     </section>
-    
+
 <section class="main-content">
       <h3>
 <a id="welcome-to-phydsl" class="anchor" href="#welcome-to-phydsl" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PhyDSL Tutorial - Alien Miner</h3>
 
 <p>In this tutorial we will explore the design and generation of Alien Miner, a physics-based platformer game. The main actor of the game is an adventurous alien whose primary mission is to collect precious gems while exploring the galaxy. In this version of Alien Miner the main actor of the game is found inside a cave with hidden treasures and dangerous meteorites. The goal of the game is to guide the alien through the cave while collecting all its precious treasures. The alien should avoid the meteorites at all cost.</p>
 
-<p>For every emerald and diamond collected, the player will receive 20 and 30 points respectively. While emeralds are collected when the alien touches them, diamonds are collected when the player taps on their screen position. If the alien gets hit by a meteorite, the player will lose 20 points. The game has a total duration of 120 seconds. However, if the player reaches the teleportation portal at the need of the level, the game will come to an end.</p>   
+<p>For every emerald and diamond collected, the player will receive 20 and 30 points respectively. While emeralds are collected when the alien touches them, diamonds are collected when the player taps on their screen position. If the alien gets hit by a meteorite, the player will lose 20 points. The game has a total duration of 120 seconds. However, if the player reaches the teleportation portal at the need of the level, the game will come to an end.</p>
 
-<p>In this instance of Alien Miner the main actor of the game is controlled using on-screen controls, i.e. three buttons specify the vertical and horizontal acceleration of the alien. Let us briefly guide you through the development process for this game using PhyDSL.</p> 
+<p>In this instance of Alien Miner the main actor of the game is controlled using on-screen controls, i.e. three buttons specify the vertical and horizontal acceleration of the alien. Let us briefly guide you through the development process for this game using PhyDSL.</p>
 </section>
 
 <div>
@@ -36,7 +36,7 @@
 
 <section class="main-content">
 <h3>
-<a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deeloping a Game</h3>
+<a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Developing a Game</h3>
 <p>Creating a game in PhyDSL is a 6-step process. The following sections will explore each step.</p>
 </section>
 
@@ -56,7 +56,7 @@
 
 <p>4. If this is your first time creating a '.phy' file, Eclipse will display a dialog asking if you want to switch to an XText perspective > Click Yes. </p>
 
-</section> 
+</section>
 
 <img class="centered" src="res/file-creation.png" alt="PhyDSL Header 2" align="middle"> <br> <br>
 
@@ -65,7 +65,7 @@
 </div>
 
 <section class="main-content">
-<h3> 
+<h3>
 <a id="phydsl-technologies" class="anchor" href="#phydsl-technologies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Creating a Gameplay Design File</h3>
 
 <p>In order to create a game definition file you first need to choose all the graphical and sound artifacts that will be part of your game. This includes all the skins for the actors of the game, the game sound effects, and its background image. In order to manage memory more efficiently, you can split large background images into slices of equal size. The name of the slices should include a consecutive number index (please see the the example below). Later in this tutorial we will explain how slices can be used in order to create a memory efficient game. All the artifacts need to be stored in the “artifacts” directory of the generator. If you have not downloaded the PhyDSL generator please go to the download page in this site.</p>
@@ -86,7 +86,7 @@
 <section class="main-content">
 <p>The type system includes physical properties that will be used in the creation of the game actors, such as “elasticity”, “friction”, “density”, and “size”. Furthermore, vector and scalar variables can be declared such as “linear speed”, “angular velocity”, “gravity” and “acceleration force.” These variables will be used to specify the properties of the world of the game, the actions that controls perform over the main actor of the game, and the properties of appearance events in the game. Later in this tutorial will use all of them, so please sit tight and continue reading.</p>
 
-<p>Resources can be used in order to access the graphical and sound artifacts of the game.  Each resource variable specifies the name of a concrete file in the ‘artifacts’ directory of the generator. PhyDSL treats graphical and sound artifacts indistinctively. </p>
+<p>Resources can be used in order to access the graphical and sound artifacts of the game.  Each resource variable specifies the name of a concrete file in the ‘artifacts’ directory of the generator. PhyDSL treats graphical and sound artifacts indistinctly. </p>
 
 <p>You can reuse the type section of the definition file in your games. Depending on the device where you will deploy your game, you can experiment and adapt concrete values for the type system that you want to use in your game. </p>
 </section>
@@ -244,7 +244,7 @@ You can use the syntax directed editor to help you during the construction of a 
 
 <p><strong>Note:</strong> The idea of having an independent generator, i.e. not integrated with Eclipse or other development environments, is to be flexible in front of multiple editors that can produce gamplay desing specifications. Since the PhyDSL editor is based on XText and EMF technologies, multiple graphical and textual editors can be generated automatially. Currently, the PhyDSL textual editor is provided as an Eclipse plugin. However, we will soon release its browser based and IntelliJ versions.</p>
 
-<p>In order to generate the game model, please right click on your ".phy" file > PhyDSL Modeling > Generate Game Model. 
+<p>In order to generate the game model, please right click on your ".phy" file > PhyDSL Modeling > Generate Game Model.
 Next, a ‘.xmi’ game representation of the game will appear next to the game definition file. This step needs to be repeated every time a modification is done to the gameplay design file. Please notice that you have to save the ".phy" file every time before generating a game model.</p>
 </section>
 
